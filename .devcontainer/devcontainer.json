@@ -1,0 +1,33 @@
+{
+  "name": "Python 3",
+  "dockerComposeFile": "compose.yml",
+  "service": "main",
+  "workspaceFolder": "/workspaces/main",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/apt-packages:1": {
+      "packages": "bash-completion,fonts-ipaexfont"
+    },
+    "ghcr.io/devcontainers-contrib/features/pre-commit:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "esbenp.prettier-vscode",
+        "mechatroner.rainbow-csv",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ninoseki.vscode-pylens",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+        "timonwong.shellcheck",
+        "yzhang.markdown-all-in-one"
+      ]
+    }
+  },
+  "postCreateCommand": {
+    "pre-commit install": "pre-commit install",
+    "pip install": "pip install -r requirements.txt"
+  }
+}
