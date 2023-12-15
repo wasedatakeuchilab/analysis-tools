@@ -1,0 +1,4 @@
+mypy==1.7.1
+nbqa==1.7.1
+papermill==2.5.0
+tlab-analysis[jupyter] @ git+https://github.com/wasedatakeuchilab/tlab-analysis@v0.5.1
