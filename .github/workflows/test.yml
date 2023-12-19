@@ -1,0 +1,50 @@
+---
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+env:
+  PYTHONUNBUFFERED: '1'
+  FORCE_COLOR: '1'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version:
+          - '3.11'
+          - '3.12'
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check type
+        run: mypy .
+      - name: Check type (notebook)
+        run: nbqa mypy .
+      - name: Test
+        run: python -m unittest
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run pre-commit-ci-lite
+        uses: pre-commit-ci/lite-action@v1.0.1
+        if: always()
