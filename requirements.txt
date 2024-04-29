@@ -1,5 +1,5 @@
 mypy==1.10.0
 nbqa==1.8.5
-papermill==2.5.0
+papermill==2.6.0
 scikit-learn==1.4.2
 tlab-analysis[jupyter] @ git+https://github.com/wasedatakeuchilab/tlab-analysis@v0.5.1
