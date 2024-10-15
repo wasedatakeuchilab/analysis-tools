@@ -1,4 +1,4 @@
-mypy==1.11.2
+mypy==1.12.0
 nbqa==1.8.5
 papermill==2.6.0
 scikit-learn==1.5.2
